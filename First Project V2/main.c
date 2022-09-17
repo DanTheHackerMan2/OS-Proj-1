@@ -23,12 +23,12 @@ while(state!=5){
     printf("Type 5 to close program\n");
     scanf("%d", &state);  
   }
-  if (state==1){// add
+  if (state==1){// add //Allocates memory to structs
   node *new = NULL;
   new = malloc(sizeof(struct node));
   new->next=new->prev=NULL;
   new->lastN=new->firstN=new->yearOS=NULL;
-  if (first==NULL){//Allocates memory to structs//For initial Item
+  if (first==NULL){
     int len=0;
     printf("\nPlease input the Last Name:\n");
     scanf("%s",input);
@@ -51,7 +51,7 @@ while(state!=5){
     first = new;
     last = new;
   }
-  else { //Allocates memory to structs// For inital Item
+  else { //Allocates memory to structs
     last->next=new;
     new->prev=last;
     int len;
@@ -120,7 +120,7 @@ while(state!=5){
 */
 
 
-  if(state==3){//Prints forward from first to last //Allocates and deallocates memory
+  if(state==3){//Prints forward from first to last //Allocates Memory
     if(first==NULL){//Inital check to see if list isnt empty;
       state=0;
       printf("\nList is empty :(\n");
@@ -148,7 +148,7 @@ while(state!=5){
   state=0;
   }
   }
-  if(state==4){//Prints backwards from last to first //Allocates and deallocates memory
+  if(state==4){//Prints backwards from last to first //Allocates
     if(first==NULL){//Inital check to see if list isnt empty;
       state=0;
       printf("\nList is empty :(\n");
@@ -177,7 +177,7 @@ while(state!=5){
   }
   }
 }
-if(first!=NULL){
+if(first!=NULL){ //deallocates memory
 temp = malloc(sizeof(struct node));
 int run=0;
 int num=1;
