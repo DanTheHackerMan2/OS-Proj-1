@@ -3,7 +3,8 @@
 #include <string.h>
 #include "funct1.h"
 
-
+//Just for documentation purposes: For future me, find out how to do functions with these pointers
+//Would be a lot more organized and beneficial. Only reason I did it like this was because it runs like this 
 void main()
 {
 int state=0;
@@ -16,21 +17,22 @@ while(state!=5){
     printf("\n");
     printf("What would you like to do?\n");
     printf("Type 1 to add an individual\n");
-    printf("Type 2 to remove an individual\n");
+    printf("Type 2 to remove an individual *Does not Work*\n");
     printf("Type 3 to print the list from beginning to end\n");
     printf("Type 4 to print the list from end to beginning\n");
     printf("Type 5 to close program\n");
     scanf("%d", &state);  
   }
   if (state==1){// add
-  struct node *new = NULL;
+  node *new = NULL;
   new = malloc(sizeof(struct node));
+  new->next=new->prev=NULL;
+  new->lastN=new->firstN=new->yearOS=NULL;
   if (first==NULL){//Allocates memory to structs//For initial Item
-    int len;
+    int len=0;
     printf("\nPlease input the Last Name:\n");
     scanf("%s",input);
-    len = (int) strlen(input);
-    new->lastN = (char *) malloc(len); 
+    new->lastN = malloc(sizeof(char)*strlen(input)+1); 
     strcpy(new->lastN, input);
     printf("Please input the First Name:\n");
     scanf("%s",input);
@@ -46,8 +48,6 @@ while(state!=5){
     scanf("%d",&new->yearOG);
     printf("Please input the 9 digit Student id Num:\n");
     scanf("%ld",&new->id);
-    new->next=NULL;
-    new->prev=NULL;
     first = new;
     last = new;
   }
@@ -74,12 +74,6 @@ while(state!=5){
     scanf("%d",&new->yearOG);
     printf("Please input the 9 digit Student id Num:\n");
     scanf("%ld",&new->id);
-    printf("Last Name: %s\n", new->lastN);
-    printf("First Name: %s\n", new->firstN);
-    printf("Year of Student: %s\n", new->yearOS);
-    printf("Year of Graduation: %u\n", new->yearOG);
-    printf("Student ID Number: %ld\n", new->id);
-    new->next==NULL;
     last=new;
   }
   state=0;
@@ -183,6 +177,7 @@ while(state!=5){
   }
   }
 }
+if(first!=NULL){
 temp = malloc(sizeof(struct node));
 int run=0;
 int num=1;
@@ -195,9 +190,11 @@ while(run==0){
     free(temp->firstN);
     free(temp->yearOS);
     last=temp->prev;
+    
     printf("\nCleared:%d\n",num);
     num+=1;
     }
+}
 
 }
 
